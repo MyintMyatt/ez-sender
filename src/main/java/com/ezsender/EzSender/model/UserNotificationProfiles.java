@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,13 +16,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Document(collection = "user_notification_profiles")
+@CompoundIndexes({
+        @CompoundIndex(name = "username_tenant_index",def = "{'username' : 1, 'tenantId' : 1}", unique = true)
+})
 @Data
 public class UserNotificationProfiles {
 
     @Id
     private String id;
 
-    @Indexed(unique = true)
     private String username;
 
     @NotBlank(message = "Tenant id required")
@@ -51,5 +55,6 @@ public class UserNotificationProfiles {
         private boolean smsEnabled;
     }
 
+    private boolean active = false;
 
 }
