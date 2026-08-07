@@ -1,0 +1,25 @@
+syntax= "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.ez_sender.grpc.notification";
+option java_outer_classname = "NotificationSubscribeProto";
+
+message SingleUserSubscribeRequest {
+  string topic = 1;
+  string username = 2;
+}
+
+message MultiUserSubscribeRequest {
+  string topic = 1;
+  repeated string username = 2;
+}
+
+message SingleUserUnSubscribeRequest {
+  string topic = 1;
+  string username = 2;
+}
+
+message MultiUserUnSubscribeRequest {
+  string topic = 1;
+  repeated string username = 2;
+}

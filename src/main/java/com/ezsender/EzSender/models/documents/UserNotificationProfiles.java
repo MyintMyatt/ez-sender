@@ -1,4 +1,4 @@
-package com.ezsender.EzSender.model;
+package com.ezsender.EzSender.models.documents;
 
 
 import jakarta.validation.constraints.NotBlank;
