@@ -5,6 +5,7 @@ option java_package = "dev.orion.grpc.notification";
 option java_outer_classname = "CommonNotificationClass";
 
 import 'notification_profiles_register.proto';
+import 'notification_subscribe.proto';
 
 message OtpNotificationRequest{
   string email = 1;
@@ -20,4 +21,11 @@ message NotificationCommonResponse{
 service NotificationService{
   rpc sendOtpMail(OtpNotificationRequest) returns (NotificationCommonResponse);
   rpc notificationProfileRegister (NotificationProfileRegisterRequest) returns (NotificationProfileRegisterResponse);
+
+  // for subscribe and unsubscribe topic
+  rpc subscribeSingleUser(SingleUserSubscribeRequest) returns (NotificationCommonResponse);
+  rpc unSubscribeSingleUser(SingleUserUnSubscribeRequest) returns (NotificationCommonResponse);
+
+  rpc subscribeMultiUser(MultiUserSubscribeRequest) returns (NotificationCommonResponse);
+  rpc unSubscribeMultiUser(MultiUserUnSubscribeRequest) returns (NotificationCommonResponse);
 }

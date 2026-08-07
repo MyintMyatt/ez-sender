@@ -1,6 +1,6 @@
 package com.ezsender.EzSender.repository;
 
-import com.ezsender.EzSender.model.UserNotificationProfiles;
+import com.ezsender.EzSender.models.documents.UserNotificationProfiles;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
