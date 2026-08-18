@@ -7,7 +7,7 @@ option java_outer_classname = "CommonNotificationClass";
 import 'notification_profiles_register.proto';
 import 'notification_subscribe.proto';
 
-message OtpNotificationRequest{
+message OtpMailRequest{
   string email = 1;
   string otp = 2;
 }
@@ -19,7 +19,7 @@ message NotificationCommonResponse{
 }
 
 service NotificationService{
-  rpc sendOtpMail(OtpNotificationRequest) returns (NotificationCommonResponse);
+  rpc sendOtpMail(OtpMailRequest) returns (NotificationCommonResponse);
   rpc notificationProfileRegister (NotificationProfileRegisterRequest) returns (NotificationProfileRegisterResponse);
 
   // for subscribe and unsubscribe topic

@@ -1,8 +1,8 @@
 package com.ezsender.EzSender.exception;
 
 import com.ezsender.EzSender.constant.ErrorType;
-import com.ezsender.EzSender.models.ApiResponse;
-import com.ezsender.EzSender.models.ErrorResponse;
+import com.ezsender.EzSender.models.response.ApiResponse;
+import com.ezsender.EzSender.models.response.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

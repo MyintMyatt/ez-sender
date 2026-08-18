@@ -1,8 +1,8 @@
 package com.ezsender.EzSender.rest;
 
 import com.ezsender.EzSender.constant.ErrorType;
-import com.ezsender.EzSender.models.ApiResponse;
-import com.ezsender.EzSender.models.ErrorResponse;
+import com.ezsender.EzSender.models.response.ApiResponse;
+import com.ezsender.EzSender.models.response.ErrorResponse;
 import com.ezsender.EzSender.rest.request.MultiUserSubscribeRequest;
 import com.ezsender.EzSender.rest.request.MultiUserUnSubscribeRequest;
 import com.ezsender.EzSender.rest.request.SingleUserSubscribeRequest;
