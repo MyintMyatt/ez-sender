@@ -15,4 +15,10 @@ public class RabbitMqConfigMetadata {
     private String emailRoutingKey;
     private String smsRoutingKey;
     private String pushRoutingKey;
+
+    // DLX and DLQ
+    private String dlxExchange;
+    private String emailDlq;
+    private String smsDlq;
+    private String pushDlq;
 }

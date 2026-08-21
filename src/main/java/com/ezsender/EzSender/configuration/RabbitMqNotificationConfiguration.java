@@ -2,19 +2,15 @@ package com.ezsender.EzSender.configuration;
 
 import com.ezsender.EzSender.metadata.RabbitMqConfigMetadata;
 import lombok.RequiredArgsConstructor;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.support.converter.JacksonJsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-///
-/// otp sending queue via sms, email or push notification
-/// welcome mail queue via sms, email or push notification
-///
+import java.util.HashMap;
+import java.util.Map;
+
 @Configuration
 @RequiredArgsConstructor
 public class RabbitMqNotificationConfiguration {
@@ -27,17 +23,26 @@ public class RabbitMqNotificationConfiguration {
 
     @Bean
     public Queue smsQueue() {
-        return new Queue(mqMetadata.getSmsQueue(), true);
+        Map<String, Object> args = new HashMap<>();
+        args.put("x-dead-letter-exchange", mqMetadata.getDlxExchange());
+        args.put("x-dead-letter-routing-key", "dead.sms");
+        return new Queue(mqMetadata.getSmsQueue(), true, false, false, args);
     }
 
     @Bean
     public Queue pushNotiQueue(){
-        return new Queue(mqMetadata.getPushQueue(), true);
+        Map<String, Object> args = new HashMap<>();
+        args.put("x-dead-letter-exchange", mqMetadata.getDlxExchange());
+        args.put("x-dead-letter-routing-key", "dead.push");
+        return new Queue(mqMetadata.getPushQueue(), true, false, false, args);
     }
 
     @Bean
     public Queue emailQueue() {
-        return new Queue(mqMetadata.getEmailQueue(), true);
+        Map<String, Object> args = new HashMap<>();
+        args.put("x-dead-letter-exchange", mqMetadata.getDlxExchange());
+        args.put("x-dead-letter-routing-key", "dead.email");
+        return new Queue(mqMetadata.getEmailQueue(), true, false, false, args);
     }
 
     @Bean
@@ -58,5 +63,19 @@ public class RabbitMqNotificationConfiguration {
     @Bean
     public MessageConverter rabbitMessageConverter(){
         return new JacksonJsonMessageConverter();
+    }
+
+    @Bean
+    public Queue smsDlq() { return new Queue(mqMetadata.getSmsDlq(), true); }
+
+    @Bean
+    public Queue pushDlq() { return new Queue(mqMetadata.getPushDlq(), true); }
+
+    @Bean
+    public Queue emailDlq() { return new Queue(mqMetadata.getEmailDlq(), true); }
+
+    @Bean
+    public DirectExchange deadLetterExchange(){
+        return new DirectExchange(mqMetadata.getDlxExchange());
     }
 }

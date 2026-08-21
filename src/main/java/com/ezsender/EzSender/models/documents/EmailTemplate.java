@@ -1,5 +1,6 @@
 package com.ezsender.EzSender.models.documents;
 
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.CompoundIndexes;
@@ -9,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @CompoundIndexes({
         @CompoundIndex(name = "template_name_index", def = "{'templateName' : 'otp', 'channel' : 'sms', 'local': 'en'}", unique = true )
 })
+@Data
 public class EmailTemplate {
     @Id
     private String id;
