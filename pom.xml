@@ -20,6 +20,7 @@
 		<protobuf.version>4.33.4</protobuf.version>
 		<protobuf-plugin.version>4.0.3</protobuf-plugin.version>
 		<os-plugin.version>1.7.1</os-plugin.version>
+		<ez-sender-model.version>1.0-SNAPSHOT</ez-sender-model.version>
 	</properties>
 
 	<dependencyManagement>
@@ -101,40 +102,46 @@
 			<artifactId>grpc-stub</artifactId>
 			<version>${grpc.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>dev.orion</groupId>
+			<artifactId>ez-sender-common-models</artifactId>
+			<version>${ez-sender-model.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<extensions>
-			<extension>
-				<groupId>kr.motd.maven</groupId>
-				<artifactId>os-maven-plugin</artifactId>
-				<version>${os-plugin.version}</version>
-			</extension>
-		</extensions>
+<!--		<extensions>-->
+<!--			<extension>-->
+<!--				<groupId>kr.motd.maven</groupId>-->
+<!--				<artifactId>os-maven-plugin</artifactId>-->
+<!--				<version>${os-plugin.version}</version>-->
+<!--			</extension>-->
+<!--		</extensions>-->
 		<plugins>
-			<plugin>
-				<groupId>io.github.ascopes</groupId>
-				<artifactId>protobuf-maven-plugin</artifactId>
-				<version>${protobuf-plugin.version}</version>
-				<configuration>
-					<protoc>${protobuf.version}</protoc>
-					<binaryMavenPlugins>
-						<binaryMavenPlugin>
-							<groupId>io.grpc</groupId>
-							<artifactId>protoc-gen-grpc-java</artifactId>
-							<version>${grpc.version}</version>
-						</binaryMavenPlugin>
-					</binaryMavenPlugins>
-				</configuration>
-				<executions>
-					<execution>
-						<id>generate</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>io.github.ascopes</groupId>-->
+<!--				<artifactId>protobuf-maven-plugin</artifactId>-->
+<!--				<version>${protobuf-plugin.version}</version>-->
+<!--				<configuration>-->
+<!--					<protoc>${protobuf.version}</protoc>-->
+<!--					<binaryMavenPlugins>-->
+<!--						<binaryMavenPlugin>-->
+<!--							<groupId>io.grpc</groupId>-->
+<!--							<artifactId>protoc-gen-grpc-java</artifactId>-->
+<!--							<version>${grpc.version}</version>-->
+<!--						</binaryMavenPlugin>-->
+<!--					</binaryMavenPlugins>-->
+<!--				</configuration>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>generate</id>-->
+<!--						<goals>-->
+<!--							<goal>generate</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
