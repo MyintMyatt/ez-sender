@@ -8,10 +8,7 @@ import com.ezsender.EzSender.models.documents.UserNotificationProfiles;
 import com.ezsender.EzSender.repository.UserNotificationRepo;
 import com.ezsender.EzSender.services.NotificationSubscribeService;
 import com.google.firebase.messaging.FirebaseMessagingException;
-import dev.orion.grpc.notification.NotificationCommonResponse;
-import dev.orion.grpc.notification.NotificationProfileRegisterRequest;
-import dev.orion.grpc.notification.NotificationProfileRegisterResponse;
-import dev.orion.grpc.notification.NotificationServiceGrpc;
+import dev.orion.grpc.notification.*;
 import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -102,4 +99,11 @@ public class NotificationGrpcService extends NotificationServiceGrpc.Notificatio
             responseObserver.onCompleted();
         }
     }
+
+    @Override
+    public void sendOtpMail(OtpMailRequest request, StreamObserver<NotificationCommonResponse> responseObserver) {
+        super.sendOtpMail(request, responseObserver);
+    }
+
+
 }

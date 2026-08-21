@@ -1,4 +1,4 @@
-package com.ezsender.EzSender.models;
+package com.ezsender.EzSender.models.response;
 
 
 import com.ezsender.EzSender.constant.ErrorType;
